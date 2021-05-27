@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PPP.Views.AccessoiresView"
+             xmlns:header="clr-namespace:PPP.ContentTemplates;assembly=PPP"
+             xmlns:system="clr-namespace:System;assembly=netstandard">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelHeader" TargetType="Label">
+                <Setter Property="FontSize" Value="Title"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="DeepSkyBlue"/>
+            </Style>
+            <Style x:Key="labelAccessory" TargetType="Label">
+                <Setter Property="FontSize" Value="Title"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style x:Key="picker" TargetType="Picker">
+                <Setter Property="FontSize" Value="Title"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <header:HeaderTemplate Grid.Row="0" Grid.ColumnSpan="2"/>
+            <Picker x:Name="Picker" Grid.ColumnSpan="2" Grid.Row="1"
+                    ItemsSource="{Binding GroupedAccessoires}"
+                    ItemDisplayBinding="{Binding Key}"
+                    Title="Select Product Family" 
+                    Margin="5"
+                    HorizontalTextAlignment="Center" 
+                    Style="{StaticResource picker}">
+            </Picker>
+
+            <ListView x:Name="ListView" Grid.Row="2" Grid.ColumnSpan="2"
+                      ItemsSource="{Binding Source={x:Reference Picker}, Path=SelectedItem }"
+                      ItemTapped="OnItemSelected"
+                      SeparatorVisibility="None">
+                <ListView.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Image" Style="{StaticResource labelHeader}"/>
+                        <Label Grid.Column="1" Text="Accessory Product" Style="{StaticResource labelHeader}"/>
+                        <Label Grid.Column="2" Text="Sap-Number" Style="{StaticResource labelHeader}"/>
+                    </Grid>
+                </ListView.Header>
+                <ListView.RowHeight>
+                    <OnPlatform x:TypeArguments="system:Int32">
+                        <On Platform="Android">128</On>
+                    </OnPlatform>
+                </ListView.RowHeight>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding Image}"/>
+                                <Label Grid.Column="1" Text="{Binding ProductionDisplayName}" Style="{StaticResource labelAccessory}"/>
+                                <Label Grid.Column="2" Text="{Binding SapPartNumber}" Style="{StaticResource labelAccessory}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

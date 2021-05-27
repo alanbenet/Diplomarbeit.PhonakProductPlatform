@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PPP.Views.HomeView"
+             xmlns:header="clr-namespace:PPP.ContentTemplates;assembly=PPP">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <header:HeaderTemplate Grid.Row="0"/>
+            <Label Grid.Row="1" Text="Recent Phonak News:" HorizontalOptions="StartAndExpand" FontSize="Title" FontAttributes="Bold" TextColor="White"/>
+            <WebView x:Name="webView" Grid.Row="2" Navigating="WebviewNavigating"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

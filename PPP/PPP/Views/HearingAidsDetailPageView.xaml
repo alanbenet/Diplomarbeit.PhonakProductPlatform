@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PPP.Views.HearingAidsDetailPageView"
+             xmlns:header="clr-namespace:PPP.ContentTemplates;assembly=PPP"
+             Background="White">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelAccessory" TargetType="Label">
+                <Setter Property="FontSize" Value="Title"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="VerticalOptions" Value="StartAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+        </ResourceDictionary>
+        </ContentPage.Resources>
+        <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <header:HeaderTemplate Grid.Row="0"/>
+            <Image x:Name="HiImage" Grid.Row="1"/>
+            <Grid Grid.Row="2" HorizontalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Product-Name:" Style="{StaticResource labelAccessory}"/>
+                <Label Grid.Row="0" Grid.Column="2" Text="Sap-Number:" Style="{StaticResource labelAccessory}"/>
+                <Label Grid.Row="1" Grid.Column="0" x:Name="HiType" Style="{StaticResource labelAccessory}"/>
+                <Label Grid.Row="1" Grid.Column="2" x:Name="HiSapNumber" Style="{StaticResource labelAccessory}"/>
+                
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

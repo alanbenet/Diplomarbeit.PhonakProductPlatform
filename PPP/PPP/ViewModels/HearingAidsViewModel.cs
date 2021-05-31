@@ -1,10 +1,6 @@
 ﻿using PPP.Models;
-using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using Xamarin.Forms;
 
 namespace PPP.ViewModels
 {
@@ -26,8 +22,6 @@ namespace PPP.ViewModels
             get => _groupedCollection;
             set => _groupedCollection = value;
         }
-
-        public ObservableCollection<Tuple<IGrouping<string, Hi>, ImageSource>> Type { get; set; }
 
         private void GroupHearingAidsByFamilyName()
         {

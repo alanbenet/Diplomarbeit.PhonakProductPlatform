@@ -7,8 +7,6 @@ namespace PPP.ViewModels
     public class AccessoiresViewModel
     {
         private IAccessoryRepo _accessoryRepo;
-        private ObservableCollection<Accessory> _accessoryList;
-        private ObservableCollection<IGrouping<string, Accessory>> _groupedCollection;
 
         public AccessoiresViewModel(IAccessoryRepo accessoryRepo)
         {
